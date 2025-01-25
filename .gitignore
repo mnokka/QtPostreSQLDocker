@@ -1,0 +1,9 @@
+# Qt-käännöstiedostot
+*.pro.user
+*.pro.user.*
+*.qmake.stash
+*.moc
+*.qmake.cache
+*.qmake.conf
+*.qmake.stash
+*.qbs

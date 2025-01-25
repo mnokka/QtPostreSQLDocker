@@ -1,0 +1,29 @@
+
+version: '3.9'
+
+services:
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    container_name: testipossu
+    environment:
+      POSTGRES_USER: mika        
+      POSTGRES_PASSWORD: passu   
+      POSTGRES_DB: cars         
+    volumes:
+      - /home/mika/DOCKERDATA:/var/lib/postgresql/data 
+      - /home/mika/DOCKERBACKUPS:/BACKUPS
+      - ./create_db.sql:/docker-entrypoint-initdb.d/create_db.sql # first time ran, db must not exists
+    ports:
+      - "5432:5432" 
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8100:8080 # http://localhost:8100  for adminer UI
+
