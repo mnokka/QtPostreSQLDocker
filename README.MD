@@ -47,8 +47,37 @@ sudo docker exec -it -u postgres testipossu psql -U mika -d cars
 
 
 ------------------------------------------
-QT directory includes small Qt(5.15) app to "access" database (showing SELECT * FROM cars;)
+QT directory includes small Qt(5.15) app to "access" database cars(showing SELECT * FROM cars;)
 
 Qt Postgres may require driver installation:
 
 sudo apt-get install libqt5sql5-psql libpq-dev
+
+------------------------------------------------------------------
+=================================================================0
+
+Repo includes also another training database "customers" 
+Customers db compose settings used via .env (not to be stored to public repo). No backuping/returning script for this db
+
+DB Port in use: 5433
+Adminer port in use: 8101
+
+Setup:
+docker-compose -f docker-compose-customers.yml up -d
+
+Start with logs:
+docker-compose -f docker-compose-customers.yml logs -f db
+
+
+Stop:
+docker-compose -f docker-compose-customers.yml down
+
+
+
+Docker CLI usage:
+
+docker exec -it asiakaspossu psql -U temppiuser -d customers
+
+Use SQL:
+
+customers=> SELECT * FROM customers;

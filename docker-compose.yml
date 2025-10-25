@@ -12,7 +12,7 @@ services:
     container_name: testipossu
     environment:
       POSTGRES_USER: mika        
-      POSTGRES_PASSWORD: passu   
+      POSTGRES_PASSWORD: passukassu   
       POSTGRES_DB: cars         
     volumes:
       - /home/mika/DOCKERDATA:/var/lib/postgresql/data 

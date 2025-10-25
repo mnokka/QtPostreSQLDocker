@@ -4,7 +4,7 @@
 
 DO $$ 
 BEGIN
-   -- Tarkista, onko taulu 'cars' olemassa
+   -- Tarkista, onko taulu 'customers' olemassa
    IF EXISTS (SELECT 1 FROM pg_tables WHERE tablename = 'cars') THEN
       -- Jos taulu on olemassa, älä tee mitään
       RAISE NOTICE 'DB exist. Not Overwriting.';

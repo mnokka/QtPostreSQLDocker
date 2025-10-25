@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    shm_size: 128mb
+    container_name: asiakaspossu
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ${POSTGRES_DATA}:/var/lib/postgresql/data
+      - ./create_db_customers.sql:/docker-entrypoint-initdb.d/create_db_customers.sql # first time ran, db must not exists
+
+    ports:
+      - "5433:5432"
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8101:8080 # http://localhost:8100  for adminer UI
