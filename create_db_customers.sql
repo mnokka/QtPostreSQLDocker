@@ -48,9 +48,46 @@ VALUES
 ('Joensuun Puutarha', 'Sara Mäkinen', 'Vehkakuja 9', 'Joensuu', '80100', 'Finland'),
 ('Hanko Surf Shop', 'Mika Korpela', 'Rantatie 7', 'Hanko', '10900', 'Finland');
 
+
+
+CREATE TABLE orders (
+  orderid INT PRIMARY KEY,
+  customerid INT,
+  orderdate DATE,
+  product VARCHAR(50),
+  quantity INT,
+  unitprice DECIMAL(6,2),
+  FOREIGN KEY (customerid) REFERENCES customers(customerid)
+);
+
+INSERT INTO orders (orderid, customerid, orderdate, product, quantity, unitprice) VALUES
+(1, 1, '2025-10-10', 'Kahvipavut 1kg', 5, 12.90),
+(2, 2, '2025-10-12', 'Betonipussi 25kg', 30, 6.50),
+(3, 3, '2025-09-22', 'Ethernet-kaapeli 5m', 10, 9.90),
+(4, 4, '2025-10-01', 'Termospullo', 15, 19.50),
+(5, 5, '2025-10-03', 'Pelastusliivit', 6, 49.00),
+(6, 6, '2025-10-05', 'Espresso-kapselit', 40, 0.45),
+(7, 7, '2025-09-30', 'Puulevy 18mm', 25, 18.00),
+(8, 8, '2025-10-08', 'Öljynsuodatin', 12, 8.20),
+(9, 9, '2025-09-18', 'Rautaputki 2m', 15, 14.90),
+(10, 10, '2025-09-25', 'Palomuuri-ohjelmisto', 2, 299.00),
+(11, 11, '2025-10-09', 'Savustuspussi', 20, 1.50),
+(12, 12, '2025-10-07', 'Matkamuisto-muki', 50, 5.90),
+(13, 13, '2025-09-28', 'Viulun kielet', 10, 15.00),
+(14, 14, '2025-10-04', 'Rakennusliima', 30, 4.20),
+(15, 15, '2025-10-06', 'Kovakantinen kirja', 12, 24.90),
+(16, 16, '2025-10-08', 'Vieraskirja', 5, 19.90),
+(17, 17, '2025-10-10', 'Purjehdustakki', 3, 129.00),
+(18, 18, '2025-10-02', 'Polkupyörän ketju', 8, 22.00),
+(19, 19, '2025-09-29', 'Puistopenkki', 2, 159.00),
+(20, 20, '2025-09-27', 'Surffilauta', 1, 699.00);
+
+
       RAISE NOTICE 'Database creation complete.';
    END IF;
 END $$;
 
 -- Näytä taulun sisältö, jos halutaan varmistaa tulokset
 SELECT * FROM customers;
+
+SELECT * FROM orders;
